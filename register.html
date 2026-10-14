@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Register · Cloud MFA{% endblock %}
+{% block content %}
+<h1>Create an account</h1>
+<p class="muted">Create a demo account, then connect an authenticator app for your second factor.</p>
+<form method="post">
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" autocomplete="email" required>
+  <label for="password">Password (at least 8 characters)</label>
+  <input id="password" name="password" type="password" minlength="8" autocomplete="new-password" required>
+  <button type="submit">Register and set up MFA</button>
+</form>
+<p>Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+{% endblock %}

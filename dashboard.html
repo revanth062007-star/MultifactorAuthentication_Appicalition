@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Secure dashboard · Cloud MFA{% endblock %}
+{% block content %}
+<h1>Welcome to the protected dashboard</h1>
+<p>You have successfully passed both authentication steps.</p>
+<p><strong>Signed in as:</strong> {{ email }}</p>
+<ul>
+  <li>Factor 1: email and password</li>
+  <li>Factor 2: time-based one-time password (TOTP)</li>
+  <li>Access: granted after successful MFA verification</li>
+</ul>
+<p class="muted">This is a local educational demo, not a production cloud security service.</p>
+<a class="button" href="{{ url_for('logout') }}">Log out</a>
+{% endblock %}

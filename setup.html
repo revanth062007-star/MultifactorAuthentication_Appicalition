@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Set up authenticator · Cloud MFA{% endblock %}
+{% block content %}
+<h1>Set up your authenticator</h1>
+<p>Open Google Authenticator, Microsoft Authenticator, or another TOTP-compatible app. Add an account by scanning this QR code.</p>
+<div class="center"><img class="qr" src="{{ qr_data_uri }}" alt="Authenticator setup QR code"></div>
+<p class="muted">Account: {{ email }}</p>
+<p>If you cannot scan the QR code, enter this setup key manually:</p>
+<p><code>{{ manual_key }}</code></p>
+<p class="muted">Keep this key private. Anyone who has it may be able to generate your codes.</p>
+<form method="post" action="{{ url_for('confirm_setup') }}">
+  <label for="code">Enter the current 6-digit code from your app</label>
+  <input id="code" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required>
+  <button type="submit">Confirm setup</button>
+</form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Verify OTP · Cloud MFA{% endblock %}
+{% block content %}
+<h1>Second-step verification</h1>
+<p class="muted">Step 2 of 2: enter the current 6-digit code from your authenticator app. Codes normally change every 30 seconds.</p>
+<form method="post">
+  <label for="code">Authenticator code</label>
+  <input id="code" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required autofocus>
+  <button type="submit">Verify and sign in</button>
+</form>
+<p><a href="{{ url_for('logout') }}">Cancel and return to login</a></p>
+{% endblock %}
